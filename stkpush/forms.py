@@ -3,17 +3,28 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=150)
-    pin = forms.CharField(widget=forms.PasswordInput, max_length=4)
+    username = forms.CharField(max_length=150, widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Username'
+    }))
+    pin = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'PIN'
+    }), max_length=4)
 
-class RegistrationForm(UserCreationForm):
-    phone_number = forms.CharField(max_length=15)
-    pin = forms.CharField(widget=forms.PasswordInput, max_length=4)
-    confirm_pin = forms.CharField(widget=forms.PasswordInput, max_length=4)
+class RegistrationForm(forms.ModelForm):
+    pin = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'PIN'
+    }), max_length=4)
+    confirm_pin = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Confirm PIN'
+    }), max_length=4)
 
     class Meta:
         model = User
-        fields = ['username', 'phone_number', 'pin', 'confirm_pin']
+        fields = ['username']
 
     def clean(self):
         cleaned_data = super().clean()

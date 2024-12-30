@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
-{%  load static %}
+
 {% block content %}
 <div class="container neumorphic">
     <h2>Register</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="form-group">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            {{ form.pin.label_tag }}
+            {{ form.pin }}
+        </div>
+        <div class="form-group">
+            {{ form.confirm_pin.label_tag }}
+            {{ form.confirm_pin }}
+        </div>
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
     <p>Already have an account? <a href="{% url 'stkpush:login' %}">Login here</a></p>
