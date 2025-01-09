@@ -3,6 +3,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, RegistrationForm
 
+def landing_page(request):
+    return render(request, 'landing.html')
+
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
