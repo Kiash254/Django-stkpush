@@ -104,11 +104,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-<<<<<<< HEAD
-    BASE_DIR / 'templates/static',
-=======
     os.path.join(BASE_DIR, 'frontend/static')
->>>>>>> 44f84a642a0c2309aa150083489c0ff200efce74
 ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'stkpush:login'
