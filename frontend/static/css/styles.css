@@ -1,0 +1,59 @@
+body {
+    background-color: #e0e0e0;
+}
+
+.container {
+    margin-top: 50px;
+    padding: 20px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    box-shadow: 5px 5px 15px #bebebe, -5px -5px 15px #ffffff;
+}
+
+.neumorphic {
+    background: #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+    padding: 20px;
+}
+
+.form-control {
+    box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+    border: none;
+    border-radius: 10px;
+    background: #e0e0e0;
+}
+
+.landing-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-content {
+    text-align: center;
+}
+
+.landing-image {
+    max-width: 70%;
+    height: auto;
+}
+
+.avatar-container {
+    display: inline-block;
+    text-align: center;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
