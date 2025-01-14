@@ -39,3 +39,17 @@ def home(request):
 @login_required
 def dashboard(request):
     return render(request, 'dashboard.html')
+
+@login_required
+def card_detail(request, card_id):
+    # Dummy data for demonstration
+    card_details = {
+        1: {"title": "Card Title 1", "description": "Detailed description for card 1", "image": "images/avatar-placeholder.png"},
+        2: {"title": "Card Title 2", "description": "Detailed description for card 2", "image": "images/avatar-placeholder.png"},
+        3: {"title": "Card Title 3", "description": "Detailed description for card 3", "image": "images/avatar-placeholder.png"},
+        4: {"title": "Card Title 4", "description": "Detailed description for card 4", "image": "images/avatar-placeholder.png"},
+        5: {"title": "Card Title 5", "description": "Detailed description for card 5", "image": "images/avatar-placeholder.png"},
+        6: {"title": "Card Title 6", "description": "Detailed description for card 6", "image": "images/avatar-placeholder.png"},
+    }
+    card = card_details.get(card_id, {})
+    return render(request, 'card_detail.html', {'card': card})
