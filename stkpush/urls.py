@@ -1,12 +1,13 @@
 from django.urls import path
-from .views import landing_page, home, login_view, register_view, dashboard
+from . import views
 
 app_name = 'stkpush'
 
 urlpatterns = [
-    path('', landing_page, name='landing_page'),
-    path('home/', home, name='home'),
-    path('login/', login_view, name='login'),
-    path('register/', register_view, name='register'),
-    path('dashboard/', dashboard, name='dashboard'),
+    path('', views.landing_page, name='landing_page'),
+    path('login/', views.login_view, name='login'),
+    path('register/', views.register_view, name='register'),
+    path('home/', views.home, name='home'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('card/<int:card_id>/', views.card_detail, name='card_detail'),
 ]
