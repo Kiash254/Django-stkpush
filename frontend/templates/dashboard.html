@@ -7,6 +7,7 @@
             <div class="avatar-container">
                 <img src="{% static 'images/avatar-placeholder.png' %}" alt="Avatar" class="avatar">
                 <p>{{ user.username }}</p>
+                <a href="{% url 'stkpush:logout' %}" class="btn btn-danger">Logout</a>
             </div>
         </div>
     </div>
@@ -14,60 +15,66 @@
     <p>Welcome to your dashboard!</p>
     <div class="row">
         <div class="col-md-4">
-            <a href="{% url 'stkpush:card_detail' 1 %}" class="card clickable-card">
+            <div class="card clickable-card">
+                <a href="{% url 'stkpush:card_detail' 1 %}" class="stretched-link"></a>
                 <div class="card-body text-center">
                     <img src="{% static 'images/avatar-placeholder.png' %}" alt="Avatar" class="avatar">
                     <h5 class="card-title">Card Title 1</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-            </a>
+            </div>
         </div>
         <div class="col-md-4">
-            <a href="{% url 'stkpush:card_detail' 2 %}" class="card clickable-card">
+            <div class="card clickable-card">
+                <a href="{% url 'stkpush:card_detail' 2 %}" class="stretched-link"></a>
                 <div class="card-body text-center">
                     <img src="{% static 'images/avatar-placeholder.png' %}" alt="Avatar" class="avatar">
                     <h5 class="card-title">Card Title 2</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-            </a>
+            </div>
         </div>
         <div class="col-md-4">
-            <a href="{% url 'stkpush:card_detail' 3 %}" class="card clickable-card">
+            <div class="card clickable-card">
+                <a href="{% url 'stkpush:card_detail' 3 %}" class="stretched-link"></a>
                 <div class="card-body text-center">
                     <img src="{% static 'images/avatar-placeholder.png' %}" alt="Avatar" class="avatar">
                     <h5 class="card-title">Card Title 3</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
     <div class="row mt-4">
         <div class="col-md-4">
-            <a href="{% url 'stkpush:card_detail' 4 %}" class="card clickable-card">
+            <div class="card clickable-card">
+                <a href="{% url 'stkpush:card_detail' 4 %}" class="stretched-link"></a>
                 <div class="card-body text-center">
                     <img src="{% static 'images/avatar-placeholder.png' %}" alt="Avatar" class="avatar">
                     <h5 class="card-title">Card Title 4</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-            </a>
+            </div>
         </div>
         <div class="col-md-4">
-            <a href="{% url 'stkpush:card_detail' 5 %}" class="card clickable-card">
+            <div class="card clickable-card">
+                <a href="{% url 'stkpush:card_detail' 5 %}" class="stretched-link"></a>
                 <div class="card-body text-center">
                     <img src="{% static 'images/avatar-placeholder.png' %}" alt="Avatar" class="avatar">
                     <h5 class="card-title">Card Title 5</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-            </a>
+            </div>
         </div>
         <div class="col-md-4">
-            <a href="{% url 'stkpush:card_detail' 6 %}" class="card clickable-card">
+            <div class="card clickable-card">
+                <a href="{% url 'stkpush:card_detail' 6 %}" class="stretched-link"></a>
                 <div class="card-body text-center">
                     <img src="{% static 'images/avatar-placeholder.png' %}" alt="Avatar" class="avatar">
                     <h5 class="card-title">Card Title 6</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
 </div>

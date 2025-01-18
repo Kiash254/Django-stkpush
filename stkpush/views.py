@@ -53,3 +53,10 @@ def card_detail(request, card_id):
     }
     card = card_details.get(card_id, {})
     return render(request, 'card_detail.html', {'card': card})
+
+
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    return redirect('stkpush:login')
