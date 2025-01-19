@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import UserProfile
+from .models import UserProfile, Card
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=150, widget=forms.TextInput(attrs={
@@ -35,3 +35,13 @@ class RegistrationForm(forms.ModelForm):
 
         if pin and confirm_pin and pin != confirm_pin:
             raise forms.ValidationError("Pins do not match")
+        
+class CardForm(forms.ModelForm):
+    class Meta:
+        model = Card
+        fields = ['title', 'description', 'image']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'image': forms.FileInput(attrs={'class': 'form-control'}),
+        }
