@@ -10,4 +10,5 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('card/<int:card_id>/', views.card_detail, name='card_detail'),
+    path('logout/', views.logout_view, name='logout'),
 ]

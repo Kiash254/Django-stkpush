@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, RegistrationForm
+from .models import Card
 
 def landing_page(request):
     return render(request, 'landing.html')
@@ -38,18 +39,14 @@ def home(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    cards = Card.objects.all()
+    return render(request, 'dashboard.html', {'cards': cards})
 
 @login_required
 def card_detail(request, card_id):
-    # Dummy data for demonstration
-    card_details = {
-        1: {"title": "Card Title 1", "description": "Detailed description for card 1", "image": "images/avatar-placeholder.png"},
-        2: {"title": "Card Title 2", "description": "Detailed description for card 2", "image": "images/avatar-placeholder.png"},
-        3: {"title": "Card Title 3", "description": "Detailed description for card 3", "image": "images/avatar-placeholder.png"},
-        4: {"title": "Card Title 4", "description": "Detailed description for card 4", "image": "images/avatar-placeholder.png"},
-        5: {"title": "Card Title 5", "description": "Detailed description for card 5", "image": "images/avatar-placeholder.png"},
-        6: {"title": "Card Title 6", "description": "Detailed description for card 6", "image": "images/avatar-placeholder.png"},
-    }
-    card = card_details.get(card_id, {})
+    card = get_object_or_404(Card, id=card_id)
     return render(request, 'card_detail.html', {'card': card})
+
+def logout_view(request):
+    logout(request)
+    return redirect('stkpush:login')
