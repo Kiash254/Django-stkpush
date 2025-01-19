@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import UserProfile
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=150, widget=forms.TextInput(attrs={
@@ -21,6 +22,7 @@ class RegistrationForm(forms.ModelForm):
         'class': 'form-control',
         'placeholder': 'Confirm PIN'
     }), max_length=4)
+    avatar = forms.ImageField()
 
     class Meta:
         model = User
