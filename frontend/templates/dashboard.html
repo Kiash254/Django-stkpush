@@ -14,6 +14,13 @@
     <h1>Dashboard</h1>
     <p>Welcome to your dashboard!</p>
     <a href="{% url 'stkpush:add_card' %}" class="btn btn-primary mb-3">+</a>
+    {% if messages %}
+    <div class="alert alert-success">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
     <div class="row">
         {% for card in cards %}
         <div class="col-md-4">

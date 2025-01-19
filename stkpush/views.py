@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Card
 from .forms import CardForm
 
@@ -26,6 +27,7 @@ def add_card(request):
         form = CardForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Card added successfully!')
             return redirect('stkpush:dashboard')
     else:
         form = CardForm()
@@ -38,6 +40,7 @@ def edit_card(request, card_id):
         form = CardForm(request.POST, request.FILES, instance=card)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Card updated successfully!')
             return redirect('stkpush:dashboard')
     else:
         form = CardForm(instance=card)
@@ -48,5 +51,6 @@ def delete_card(request, card_id):
     card = get_object_or_404(Card, id=card_id)
     if request.method == 'POST':
         card.delete()
+        messages.success(request, 'Card deleted successfully!')
         return redirect('stkpush:dashboard')
     return render(request, 'delete_card.html', {'card': card})
