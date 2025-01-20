@@ -13,15 +13,26 @@
     </div>
     <h1>Dashboard</h1>
     <p>Welcome to your dashboard!</p>
+    <a href="{% url 'stkpush:add_card' %}" class="btn btn-primary mb-3">+</a>
+    {% if messages %}
+    <div class="alert alert-success">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
     <div class="row">
         {% for card in cards %}
         <div class="col-md-4">
-            <div class="card clickable-card">
-                <a href="{% url 'stkpush:card_detail' card.id %}" class="stretched-link"></a>
+            <div class="card">
                 <div class="card-body text-center">
                     <img src="{{ card.image.url }}" alt="Avatar" class="avatar">
-                    <h5 class="card-title">{{ card.title }}</h5>
+                    <h5 class="card-title">
+                        <a href="{% url 'stkpush:card_detail' card.id %}">{{ card.title }}</a>
+                    </h5>
                     <p class="card-text">{{ card.description }}</p>
+                    <a href="{% url 'stkpush:edit_card' card.id %}" class="btn btn-secondary">Edit</a>
+                    <a href="{% url 'stkpush:delete_card' card.id %}" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>
