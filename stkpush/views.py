@@ -9,7 +9,8 @@ def landing_page(request):
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+    cards = Card.objects.all()
+    return render(request, 'home.html', {'cards': cards})
 
 @login_required
 def dashboard(request):
