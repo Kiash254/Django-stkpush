@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Card
-from .forms import CardForm
+from .models import Card, AppointmentBot
+from .forms import CardForm, AppointmentBotForm
 
 def landing_page(request):
     return render(request, 'landing.html')
@@ -16,6 +16,22 @@ def home(request):
 def dashboard(request):
     cards = Card.objects.all()
     return render(request, 'dashboard.html', {'cards': cards})
+
+@login_required
+def bot_page(request):
+    bot_instance = None
+    if request.method == 'POST':
+        form = AppointmentBotForm(request.POST)
+        if form.is_valid():
+            bot_instance = form.save(commit=False)
+            bot_instance.user = request.user
+            bot_instance.save()
+            messages.success(request, 'Bot configured successfully!')
+        else:
+            messages.error(request, 'There was an error configuring the bot.')
+    else:
+        form = AppointmentBotForm()
+    return render(request, 'bot_page.html', {'form': form, 'bot_instance': bot_instance})
 
 @login_required
 def card_detail(request, card_id):

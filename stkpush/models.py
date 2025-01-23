@@ -15,3 +15,14 @@ class Card(models.Model):
 
     def __str__(self):
         return self.title
+
+class AppointmentBot(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
+    ofc_location = models.CharField(max_length=100, default='ANY')
+    consular_location = models.CharField(max_length=100, default='DELHI')
+    preferred_time = models.TimeField()
+
+    def __str__(self):
+        return f"Bot for {self.user.username}"

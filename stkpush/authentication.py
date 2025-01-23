@@ -13,7 +13,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=pin)
             if user is not None:
                 login(request, user)
-                return redirect('stkpush:dashboard')
+                return redirect('stkpush:bot')
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})

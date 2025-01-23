@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 bg-light p-3">
+        <div class="text-center">
+            <img 
+                src="{{ user.userprofile.avatar.url }}" 
+                alt="Profile Avatar" 
+                class="rounded-circle img-thumbnail" 
+                style="width: 100px; height: 100px;"
+            >
+            <h4 class="mt-2">{{ user.username }}</h4>
+            <a href="{% url 'stkpush:logout' %}" class="btn btn-danger btn-sm mt-2">Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+        <h1> US appointments Automatically</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        {% if bot_instance %}
+            <h2 class="mt-4">Bot Configuration</h2>
+            <div class="card mt-3 p-3">
+                <p><strong>User:</strong> {{ bot_instance.user.username }}</p>
+                <p><strong>Username:</strong> {{ bot_instance.username }}</p>
+                <p><strong>OFC Location:</strong> {{ bot_instance.ofc_location }}</p>
+                <p><strong>Consular Location:</strong> {{ bot_instance.consular_location }}</p>
+                <p><strong>Preferred Time:</strong> {{ bot_instance.preferred_time }}</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
