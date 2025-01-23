@@ -4,5 +4,19 @@
 <div class="container neumorphic">
     <h1>Home Page</h1>
     <p>Welcome to the home page!</p>
+    <div class="row">
+        {% for card in cards %}
+        <div class="col-md-4">
+            <div class="card clickable-card">
+                <a href="{% url 'stkpush:card_detail' card.id %}" class="stretched-link"></a>
+                <div class="card-body text-center">
+                    <img src="{{ card.image.url }}" alt="Avatar" class="avatar">
+                    <h5 class="card-title">{{ card.title }}</h5>
+                    <p class="card-text">{{ card.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
